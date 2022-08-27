@@ -1,15 +1,15 @@
-#import "JSITemplateModule.h"
+#import "FSModule.h"
 
 #import <React/RCTBridge+Private.h>
 #import <React/RCTUtils.h>
 #import <jsi/jsi.h>
 
-#import "../cpp/JSITemplateHostObject.h"
+#import "../cpp/FSHostObject.h"
 #import "../cpp/Utils/JSIMacros.h"
 
-@implementation JSITemplateModule
+@implementation FSModule
 
-RCT_EXPORT_MODULE(JSITemplate)
+RCT_EXPORT_MODULE(FS)
 
 - (NSString *)greetObjectiveC:(NSString *)name {
     return [NSString stringWithFormat:@"%@%@%@", @"Hello, ", name, @"!"];
@@ -17,7 +17,7 @@ RCT_EXPORT_MODULE(JSITemplate)
 
 RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(install)
 {
-    NSLog(@"Installing JSI bindings for react-native-jsi-template...");
+    NSLog(@"Installing JSI bindings for screamingvoid__fs...");
     RCTBridge* bridge = [RCTBridge currentBridge];
     RCTCxxBridge* cxxBridge = (RCTCxxBridge*)bridge;
     if (cxxBridge == nil) {
@@ -32,10 +32,10 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(install)
     }
     auto& runtime = *jsiRuntime;
 
-    auto hostObject = std::make_shared<ozymandias::JSITemplateHostObject>();
+    auto hostObject = std::make_shared<screamingvoid::FSHostObject>();
     auto object = jsi::Object::createFromHostObject(runtime, hostObject);
-    runtime.global().setProperty(runtime, "__JSITemplateProxy", std::move(object));
-    
+    runtime.global().setProperty(runtime, "__FSProxy", std::move(object));
+
     auto greetObjectiveC = jsi::Function::createFromHostFunction(runtime,
                                                                  PropNameID::forUtf8(runtime,
                                                                                      "greetObjectiveC"),
@@ -50,7 +50,7 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(install)
     });
     runtime.global().setProperty(runtime, "__greetObjectiveC", std::move(greetObjectiveC));
 
-    NSLog(@"Successfully installed JSI bindings for react-native-jsi-template!");
+    NSLog(@"Successfully installed JSI bindings for screamingvoid__fs!");
     return @true;
 }
 

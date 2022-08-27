@@ -14,11 +14,11 @@ static def findNodeModules(baseDir) {
     }
     basePath = basePath.getParent()
   }
-  throw new GradleException("JSITemplate: Failed to find node_modules/ path!")
+  throw new GradleException("FS: Failed to find node_modules/ path!")
 }
 
 def nodeModules = findNodeModules(projectDir)
-logger.warn("JSITemplate: node_modules/ found at: ${nodeModules}")
+logger.warn("FS: node_modules/ found at: ${nodeModules}")
 
 buildscript {
   repositories {
@@ -39,11 +39,11 @@ apply plugin: 'com.android.library'
 apply plugin: 'de.undercouch.download'
 
 def getExtOrDefault(name) {
-  return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties['JSITemplate_' + name]
+  return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties['FS_' + name]
 }
 
 def getExtOrIntegerDefault(name) {
-  return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties['JSITemplate_' + name]).toInteger()
+  return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties['FS_' + name]).toInteger()
 }
 
 def reactNativeArchitectures() {

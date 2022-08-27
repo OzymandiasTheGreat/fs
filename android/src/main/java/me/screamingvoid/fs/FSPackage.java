@@ -1,4 +1,4 @@
-package org.example.jsitemplate;
+package me.screamingvoid.fs;
 
 import androidx.annotation.NonNull;
 
@@ -11,11 +11,11 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class JSITemplatePackage implements ReactPackage {
+public class FSPackage implements ReactPackage {
   @NonNull
   @Override
   public List<NativeModule> createNativeModules(@NonNull ReactApplicationContext reactContext) {
-    return Collections.singletonList(new JSITemplateModule(reactContext));
+    return Collections.singletonList(new FSModule(reactContext));
   }
 
   @NonNull

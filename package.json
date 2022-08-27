@@ -1,15 +1,15 @@
 {
-  "name": "react-native-jsi-template",
-  "version": "0.1.0",
+  "name": "@screamingvoid/fs",
+  "version": "1.0.0alpha0",
   "author": "Tomas Ravinskas <tomas@tomasrav.me> (https://tomasrav.me/)",
-  "description": "Personalized JSI module template for native development on React Native",
+  "description": "Node 16 fs module implemented as react-native JSI module, with extras",
   "main": "lib/index.js",
   "react-native": "src/index.ts",
   "types": "types/",
-  "files": [
-  ],
-  "homepage": "https://github.com/OzymandiasTheGreat/react-native-jsi-template",
+  "files": [],
+  "homepage": "https://github.com/OzymandiasTheGreat/fs",
   "scripts": {
+    "booststrap:android": "node scripts/booststrap-android.js",
     "build": "tsc"
   },
   "keywords": [
@@ -18,7 +18,9 @@
     "android",
     "native",
     "jsi",
-    "c++"
+    "c++",
+    "fs",
+    "file-system"
   ],
   "license": "MIT",
   "publishConfig": {
@@ -27,9 +29,12 @@
   "devDependencies": {
     "@types/react": "~18.0.14",
     "@types/react-native": "~0.69.1",
-    "typescript": "~4.3.5",
+    "gunzip-maybe": "^1.4.2",
+    "meow": "^9.0.0",
     "react": "18.0.0",
-    "react-native": "0.69.4"
+    "react-native": "0.69.5",
+    "tar-fs": "^2.1.1",
+    "typescript": "~4.3.5"
   },
   "peerDependencies": {
     "react": "*",

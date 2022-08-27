@@ -1,7 +1,7 @@
 #include <jni.h>
 #include <jsi/jsi.h>
 #include <pthread.h>
-#include "JSITemplateHostObject.h"
+#include "FSHostObject.h"
 #include "Utils/JSIMacros.h"
 
 using namespace std;
@@ -78,9 +78,9 @@ JNIEnv *GetJniEnv() {
 }
 
 void install(Runtime& runtime) {
-    auto hostObject = make_shared<ozymandias::JSITemplateHostObject>();
+    auto hostObject = make_shared<screamingvoid::FSHostObject>();
     auto object = Object::createFromHostObject(runtime, hostObject);
-    runtime.global().setProperty(runtime, "__JSITemplateProxy", move(object));
+    runtime.global().setProperty(runtime, "__FSProxy", move(object));
 
     auto greetJava = JSI_FUNCTION("greetJava", 1, {
         auto name = arguments[0].asString(runtime).utf8(runtime);
@@ -101,12 +101,12 @@ void install(Runtime& runtime) {
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_org_example_jsitemplate_JSITemplateModule_nativeInstall(JNIEnv *env, jclass clazz, jlong jsiPtr, jobject thiz) {
+Java_me_screamingvoid_fs_FSModule_nativeInstall(JNIEnv *env, jclass clazz, jlong jsiPtr, jobject thiz) {
     auto runtime = reinterpret_cast<Runtime*>(jsiPtr);
     if (runtime) {
         install(*runtime);
     }
-    // if runtime was nullptr, JSITemplate will not be installed. This should only happen while Remote Debugging (Chrome), but will be weird either way.
+    // if runtime was nullptr, FS will not be installed. This should only happen while Remote Debugging (Chrome), but will be weird either way.
     env->GetJavaVM(&java_vm);
     java_class = (jclass) env->NewGlobalRef(clazz);
     java_object = env->NewGlobalRef(thiz);

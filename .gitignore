@@ -147,3 +147,6 @@ lint/tmp/
 
 # Android Profiling
 *.hprof
+
+Boost
+boost_1_76_0.tar.gz

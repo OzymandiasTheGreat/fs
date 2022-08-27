@@ -1,28 +1,29 @@
 import { NativeModules, Platform } from 'react-native';
 
-type JSITemplate = {
+type FS = {
   greeting: "Hello, World!";
   greet: (name?: string) => string;
   greetAsync: (name: string | undefined, callback: (err: Error | null, greeting: string) => void) => void;
+  read: (path: string) => Uint8Array;
 };
 
 // global func declaration for JSI functions
 declare global {
   function nativeCallSyncHook(): unknown;
-  var __JSITemplateProxy: JSITemplate | undefined;
+  var __FSProxy: FS | undefined;
   var __greetJava: ((name: string) => string) | undefined;
   var __greetObjectiveC: ((name: string) => string) | undefined;
 }
 
 // Check if the constructor exists. If not, try installing the JSI bindings.
-if (global.__JSITemplateProxy == null) {
-  // Get the native JSITemplate ReactModule
-  const JSITemplateModule = NativeModules.JSITemplate;
-  if (JSITemplateModule == null) {
+if (global.__FSProxy == null) {
+  // Get the native FS ReactModule
+  const FSModule = NativeModules.FS;
+  if (FSModule == null) {
     let message =
-      'Failed to install react-native-jsi-template: The native `JSITemplate` Module could not be found.';
+      'Failed to install screamingvoid__fs: The native `FS` Module could not be found.';
     message +=
-      '\n* Make sure react-native-jsi-template is correctly autolinked (run `npx react-native config` to verify)';
+      '\n* Make sure screamingvoid__fs is correctly autolinked (run `npx react-native config` to verify)';
     if (Platform.OS === 'ios' || Platform.OS === 'macos') {
       message += '\n* Make sure you ran `pod install` in the ios/ directory.';
     }
@@ -36,7 +37,7 @@ if (global.__JSITemplateProxy == null) {
       if (ExpoConstants.appOwnership === 'expo') {
         // We're running Expo Go
         throw new Error(
-          'react-native-jsi-template is not supported in Expo Go! Use EAS (`expo prebuild`) or eject to a bare workflow instead.'
+          'screamingvoid__fs is not supported in Expo Go! Use EAS (`expo prebuild`) or eject to a bare workflow instead.'
         );
       } else {
         // We're running Expo bare / standalone
@@ -49,26 +50,26 @@ if (global.__JSITemplateProxy == null) {
   }
 
   // Check if we are running on-device (JSI)
-  if (global.nativeCallSyncHook == null || JSITemplateModule.install == null) {
+  if (global.nativeCallSyncHook == null || FSModule.install == null) {
     throw new Error(
-      'Failed to install react-native-jsi-template: React Native is not running on-device. JSITemplate can only be used when synchronous method invocations (JSI) are possible. If you are using a remote debugger (e.g. Chrome), switch to an on-device debugger (e.g. Flipper) instead.'
+      'Failed to install screamingvoid__fs: React Native is not running on-device. FS can only be used when synchronous method invocations (JSI) are possible. If you are using a remote debugger (e.g. Chrome), switch to an on-device debugger (e.g. Flipper) instead.'
     );
   }
 
   // Call the synchronous blocking install() function
-  const result = JSITemplateModule.install();
+  const result = FSModule.install();
   if (result !== true)
     throw new Error(
-      `Failed to install react-native-jsi-template: The native JISTemplate Module could not be installed! Looks like something went wrong when installing JSI bindings: ${result}`
+      `Failed to install screamingvoid__fs: The native FS Module could not be installed! Looks like something went wrong when installing JSI bindings: ${result}`
     );
 
   // Check again if the constructor now exists. If not, throw an error.
-  if (global.__JSITemplateProxy == null)
+  if (global.__FSProxy == null)
     throw new Error(
-      'Failed to install react-native-jsi-template, the native initializer function does not exist. Are you trying to use JSITemplate from different JS Runtimes?'
+      'Failed to install screamingvoid__fs, the native initializer function does not exist. Are you trying to use FS from different JS Runtimes?'
     );
 }
 
-export const JSITemplate = global.__JSITemplateProxy;
+export const FS = global.__FSProxy;
 export const greetJava = global.__greetJava;
 export const greetObjectiveC = global.__greetObjectiveC;

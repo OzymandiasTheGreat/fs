@@ -3,7 +3,7 @@ require "json"
 package = JSON.parse(File.read(File.join(__dir__, "package.json")))
 
 Pod::Spec.new do |s|
-  s.name         = "react-native-jsi-template"
+  s.name         = "screamingvoid__fs"
   s.version      = package["version"]
   s.summary      = package["description"]
   s.homepage     = package["homepage"]
@@ -11,14 +11,14 @@ Pod::Spec.new do |s|
   s.authors      = package["author"]
 
   s.platforms    = { :ios => "11.0", :tvos => "12.0", :osx => "10.14" }
-  s.source       = { :git => "https://github.com/ozymandiasTheGreat/react-native-jsi-template.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/ozymandiasTheGreat/fs.git", :tag => "#{s.version}" }
 
   # All source files that should be publicly visible
   # Note how this does not include headers, since those can nameclash.
   s.source_files = [
     "ios/**/*.{m,mm}",
     "cpp/**/*.cpp",
-    "ios/JSITemplateModule.h"
+    "ios/FSModule.h"
   ]
   # Any private headers that are not globally unique should be mentioned here.
   # Otherwise there will be a nameclash, since CocoaPods flattens out any header directories

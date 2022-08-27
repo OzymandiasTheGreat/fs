@@ -1,26 +1,27 @@
-#include "JSITemplateHostObject.h"
+#include "FSHostObject.h"
+#include "Utils/Uint8Array.h"
 #include "Utils/JSIMacros.h"
 #include <jsi/jsi.h>
 #include <thread>
+#include <boost/iostreams/device/file_descriptor.hpp>
 
-namespace ozymandias {
+namespace screamingvoid {
 
 using namespace std;
 using namespace facebook::jsi;
 
-// TODO: Create macros for this so we don't have to repeat ourselves for each JSI func?
-
-vector<PropNameID> JSITemplateHostObject::getPropertyNames(Runtime& runtime) {
+vector<PropNameID> FSHostObject::getPropertyNames(Runtime& runtime) {
 	vector<PropNameID> result;
 
 	result.push_back(PropNameID::forUtf8(runtime, "greeting"));
 	result.push_back(PropNameID::forUtf8(runtime, "greet"));
 	result.push_back(PropNameID::forUtf8(runtime, "greetAsync"));
+  result.push_back(PropNameID::forUtf8(runtime, "read"));
 
 	return result;
 }
 
-Value JSITemplateHostObject::get(Runtime& runtime, const PropNameID& propNameId) {
+Value FSHostObject::get(Runtime& runtime, const PropNameID& propNameId) {
 	auto propName = propNameId.utf8(runtime);
 
   JSI_HOSTOBJECT_STRING("greeting", "Hello, World!");
@@ -52,8 +53,17 @@ Value JSITemplateHostObject::get(Runtime& runtime, const PropNameID& propNameId)
 
     return Value::undefined();
   });
+  JSI_HOSTOBJECT_METHOD("read", 1, {
+    auto path = JSI_ARG_STRING(0);
+    boost::iostreams::file_descriptor_source fd(path, ios_base::in);
+    auto len = fd.seek(0, ios::seekdir::end);
+    auto buf = Uint8Array(runtime, (size_t) len);
+    fd.seek(0, ios::seekdir::beg);
+    fd.read((char *) buf.toArray(runtime), len);
+    return Value(runtime, buf);
+  });
 
 	return Value::undefined();
 }
 
-} // namespace ozymandias
+} // namespace screamingvoid

@@ -1,4 +1,4 @@
-package org.example.jsitemplate;
+package me.screamingvoid.fs;
 
 import android.util.Log;
 
@@ -11,11 +11,11 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.module.annotations.ReactModule;
 
-@ReactModule(name = JSITemplateModule.NAME)
-public class JSITemplateModule extends ReactContextBaseJavaModule {
-  public static final String NAME = "JSITemplate";
+@ReactModule(name = FSModule.NAME)
+public class FSModule extends ReactContextBaseJavaModule {
+  public static final String NAME = "FS";
 
-  public JSITemplateModule(ReactApplicationContext reactContext) {
+  public FSModule(ReactApplicationContext reactContext) {
     super(reactContext);
   }
 
@@ -29,17 +29,17 @@ public class JSITemplateModule extends ReactContextBaseJavaModule {
   public boolean install() {
     try {
       Log.i(NAME, "Loading C++ library...");
-      System.loadLibrary("reactnativejsitemplate");
+      System.loadLibrary("fs");
 
       JavaScriptContextHolder jsContext = getReactApplicationContext().getJavaScriptContextHolder();
 
-      Log.i(NAME, "Installing JSI Bindings for react-native-jsi-template...");
+      Log.i(NAME, "Installing JSI Bindings for screamingvoid__fs...");
       nativeInstall(jsContext.get(), this);
-      Log.i(NAME, "Successfully installed JSI Bindings for react-native-jsi-template!");
+      Log.i(NAME, "Successfully installed JSI Bindings for screamingvoid__fs!");
 
       return true;
     } catch (Exception exception) {
-      Log.e(NAME, "Failed to install JSI Bindings for react-native-jsi-template!", exception);
+      Log.e(NAME, "Failed to install JSI Bindings for screamingvoid__fs!", exception);
       return false;
     }
   }

@@ -1,18 +1,18 @@
-# react-native-jsi-template
+# fs
 
 ## Installation
 
 ### React Native
 
 ```sh
-yarn add react-native-jsi-template
+yarn add @screamingvoid/fs
 cd ios && pod install
 ```
 
 ### Expo
 
 ```sh
-expo install react-native-jsi-template
+expo install @screamingvoid/fs
 expo prebuild
 ```
 
