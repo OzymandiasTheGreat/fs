@@ -19,8 +19,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		93C2998B28B9AC7500B3F973 /* libJSITemplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJSITemplate.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		93C2998C28B9ACA700B3F973 /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ios; sourceTree = "<group>"; };
+		93C2998B28B9AC7500B3F973 /* libJSITemplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libJSITemplate.a; path = "/Users/ozymandias/Projects/fs/library/ios/build/Debug-iphoneos/libJSITemplate.a"; sourceTree = "<absolute>"; };
+		93D34A0028BB260E00CA9912 /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ios; sourceTree = "<group>"; };
+		93D34A0228BB2AD300CA9912 /* screamingvoid__fs.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = screamingvoid__fs.podspec; path = ../screamingvoid__fs.podspec; sourceTree = "<group>"; };
 		B85F94A227BE4A5E0046C221 /* cpp */ = {isa = PBXFileReference; lastKnownFileType = folder; name = cpp; path = ../cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -38,9 +39,9 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				93C2998C28B9ACA700B3F973 /* ios */,
+				93D34A0228BB2AD300CA9912 /* screamingvoid__fs.podspec */,
+				93D34A0028BB260E00CA9912 /* ios */,
 				B85F94A227BE4A5E0046C221 /* cpp */,
-				93C2998B28B9AC7500B3F973 /* libJSITemplate.a */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,7 +79,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "JSITemplate" */;
+			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "FS" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -235,7 +236,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "JSITemplate" */ = {
+		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "FS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511ED1A9E6C8500147676 /* Debug */,

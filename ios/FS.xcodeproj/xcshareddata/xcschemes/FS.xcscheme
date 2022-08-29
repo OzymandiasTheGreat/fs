@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "58B511DA1A9E6C8500147676"
-               BuildableName = "libFS.a"
-               BlueprintName = "FS"
+               BuildableName = "libJSITemplate.a"
+               BlueprintName = "JSITemplate"
                ReferencedContainer = "container:FS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -51,8 +51,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "58B511DA1A9E6C8500147676"
-            BuildableName = "libFS.a"
-            BlueprintName = "FS"
+            BuildableName = "libJSITemplate.a"
+            BlueprintName = "JSITemplate"
             ReferencedContainer = "container:FS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
